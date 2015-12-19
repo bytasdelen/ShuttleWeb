@@ -3,7 +3,6 @@
 class Admin extends Controller {
 
     public function __construct() {
-        error_log("admin.php");
         parent::__construct();
     }
 

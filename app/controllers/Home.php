@@ -3,8 +3,8 @@
 class Home extends Controller {
 
     public function __construct() {
-        error_log("geliyormu");
-        parent::__construct();
+        -
+                parent::__construct();
     }
 
     public function index() {
@@ -15,6 +15,10 @@ class Home extends Controller {
         $this->load->view("Template_FrontEnd/header");
         $this->load->view("Template_FrontEnd/home");
         $this->load->view("Template_FrontEnd/footer");
+    }
+
+    public function login() {
+        $this->load->view("Entry/loginForm");
     }
 
 }

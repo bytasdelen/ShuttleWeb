@@ -3,6 +3,10 @@ php_value error_reporting 9999
 
 RewriteEngine On
 RewriteBase /ShuttleWeb/
+RewriteEngine On
+
+RewriteCond %{SERVER_PORT} !^443$
+
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -16,31 +20,9 @@ php_value session.cookie_lifetime 10000
 php_value session.gc_maxlifetime 10000
 
 #Hata Yönlendirmeler
-# Error Pages
-ErrorDocument 400 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 401 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 402 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 403 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 404 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 405 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 406 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 407 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 408 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 409 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 410 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 411 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 412 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 413 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 414 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 500 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 501 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 502 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 503 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 504 http://localhost/ShuttleWeb/asd.html
-ErrorDocument 505 http://localhost/ShuttleWeb/asd.html
 
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http://([-a-z0-9]+\.)?phpr\.org[NC]
+RewriteCond %{HTTP_REFERER} !^https://([-a-z0-9]+\.)?phpr\.org[NC]
 RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
 RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR] 

@@ -20,7 +20,13 @@ class Panel_Model extends Model {
     }
 
     public function delete($gelenid) {
-        return ($this->db->delete("table","table_id=$gelenid"));
+        return ($this->db->delete("table", "table_id=$gelenid"));
+    }
+
+    public function userselect($kadi, $sifre) {
+        $sql = "SELECT id FROM personel WHERE ad_soyad='$kadi' AND  sifre='$sifre'";
+        error_log($sql);
+        return $this->db->select($sql);
     }
 
 }
